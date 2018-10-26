@@ -37,7 +37,7 @@ class CVChar(object):
         self.tre = None
 
     def contour_distance_from(self, another_cv_char,
-                              method = cv2.cv.CV_CONTOURS_MATCH_I2):
+                              method = 2):
         #method can also be cv2.cv.CV_CONTOURS_MATCH_I1 or I3
         self.make_contour()
         another_cv_char.make_contour()
@@ -57,7 +57,7 @@ class CVChar(object):
         self.vassert(self.img is not None)
         self.vassert(self.img.data)
 
-        contours, hierarchy = cv2.findContours(self.img, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+        im2, contours, hierarchy = cv2.findContours(self.img, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         self.cnt = contours[-1]
 
         self.vassert(self.cnt is not None)
